@@ -1,0 +1,26 @@
+{
+  "name": "expedientes-medicos",
+  "version": "1.0.0",
+  "description": "Proyecto para EYAP",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SBenjaminVR/Expedientes-Medicos.git"
+  },
+  "author": "Benjamin Valdez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SBenjaminVR/Expedientes-Medicos/issues"
+  },
+  "homepage": "https://github.com/SBenjaminVR/Expedientes-Medicos#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.3"
+  }
+}

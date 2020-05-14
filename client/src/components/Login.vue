@@ -57,19 +57,27 @@
                 </v-card-title>
                 <v-divider></v-divider>
                 <v-card-text>
-                <p>Inicie sesión con su usuario y contraseña:</p>
-                <v-form>
+                <p>Inicie sesión con su correo y contraseña:</p>
+                <v-form 
+                    ref="form"
+                >
                     <v-text-field
-                                outline
-                                label="Usuario"
-                                type="text"
-                                v-model="username"></v-text-field>
+                        outline
+                        label="Correo"
+                        type="text"
+                        required
+                        v-model="model.email"
+                        :rules="emailRules"
+                    ></v-text-field>
                     <v-text-field
-                                outline
-                                hide-details
-                                label="Contraseña"
-                                type="password"
-                                v-model="password"></v-text-field>
+                        outline
+                        label="Contraseña"
+                        type="password"
+                        :rules="[v => !!v || 'La contraseña es requerida']"
+                        v-model="model.password"
+                        required
+                        @keyup.enter.native="login()"
+                    ></v-text-field>
                 </v-form>
                 </v-card-text>
                 <v-divider></v-divider>
@@ -85,6 +93,7 @@
                                     large
                                     elevation="10"
                                     :block="$vuetify.breakpoint.smAndDown"
+                                    @click="login()"
                                 >
                                     <v-icon size="15" left>fas fa-lock</v-icon>
                                     Iniciar sesión
@@ -121,12 +130,24 @@ export default {
     return {
       darkTheme: true,
       platformName: 'Platform name',
-      password: null,
-      username: null
+      model: {
+        email: "",
+        password: ""
+      },
+      emailRules: [
+        v => !!v || 'El correo es requerido',
+        v => /.+@.+\..+/.test(v) || 'El correo debe ser válido',
+      ],
+      showSnackbar: false,
+      snackbarMessage: ""
     }
   },
   methods: {
-
+      login() {
+          if (this.$refs.form.validate()) {
+              this.$router.push('/');
+          }
+      }
   }
 }
 </script>

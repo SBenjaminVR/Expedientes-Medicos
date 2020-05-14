@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <v-app>
     <v-app-bar
       app
@@ -33,114 +33,70 @@
       </div>
     </v-app-bar>
   </v-app>
+</template>-->
+
+<template>
+    <v-navigation-drawer
+      dark
+      permanent
+      enable-resize-watcher
+      width="15%"
+    >
+    <template v-slot:img>
+    <v-img src="../assets/cover.jpg" gradient="to top, rgba(17,59,78,1) 0%, rgba(24,113,105,0.25) 50%, rgba(30,128,117,0.75) 100%" height="100%"></v-img>
+    </template>
+        <v-container>
+            <v-row justify="space-around" align="end">
+                <v-col cols="4" class="px-2">
+                    <v-img
+                    alt="Trauma Logo"
+                    class="shrink mr-2"
+                    contain
+                    src="../assets/traumaTree0.png"
+                    transition="scale-transition"
+                    />
+                </v-col>
+                <v-col cols="8" class="px-5">
+                    <v-img
+                    alt="Daddy"
+                    class="shrink mt-1 hidden-sm-and-down"
+                    contain
+                    src="https://pngimage.net/wp-content/uploads/2018/05/daddy-png-4.png"
+                    transition="scale-transition"
+                    />
+                </v-col>
+            </v-row>
+        </v-container>
+      <v-list>
+        <v-list-item
+          v-for="([icon, text], i) in items"
+          :key="i"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title class="drawerItems">{{ text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 </template>
+
 
 <script>
 
 export default {
   name: "core",
-  data() {
-    return {
-      version: "0.0.0",
-      clipped: true,
-      drawer: false,
-      fixed: true,
-      temporary: true,
-      items: this.filterPaths([
-        {
-          icon: "person",
-          title: "Usuarios",
-          route: "userlist",
-          documentName: "user",
-          visible: true
-        },
-        {
-          icon: "group_work",
-          title: "Roles",
-          route: "rolelist",
-          documentName: "role",
-          visible: false
-        },
-        {
-          icon: "business",
-          title: "Sucursales",
-          route: "BranchOfficelist",
-          documentName: "BranchOffice",
-          visible: true
-        },
-        {
-          icon: "map",
-          title: "Ciudades",
-          route: "citieslist",
-          documentName: "cities",
-          visible: true
-        },
-        {
-          icon: "bookmark",
-          title: "Categorías",
-          route: "Categorieslist",
-          documentName: "Categories",
-          visible: true
-        },
-        {
-          icon: "chrome_reader_mode",
-          title: "Productos",
-          route: "Productslist",
-          documentName: "Products",
-          visible: true
-        },
-        {
-          icon: "important_devices",
-          title: "Envío de Notificaciones",
-          route: "Notificationslist",
-          documentName: "Notifications",
-          visible: true
-        },
-        {
-          icon: "face",
-          title: "Clientes",
-          route: "Customerslist",
-          documentName: "Customers",
-          visible: true
-        },
-        {
-          icon: "attach_money",
-          title: "Cobros",
-          route: "Chargeslist",
-          documentName: "Charges",
-          visible: false
-        },
-        {
-          icon: "credit_card",
-          title: "Lineas de solicitud de servicios",
-          route: "ServiceRequestLineslist",
-          documentName: "ServiceRequestLines",
-          visible: false
-        },
-        {
-          icon: "airport_shuttle",
-          title: "Recolectores",
-          route: "Supplierslist",
-          documentName: "Suppliers",
-          visible: true
-        },
-        {
-          icon: "description",
-          title: "Reporte de Transacciones",
-          route: "Transactionreport",
-          documentName: "Suppliers",
-          visible: true
-        }
-      ]),
-      miniVariant: false,
-      right: false,
-      rightDrawer: false,
-      title: "PASA",
-      snackbarMessage: "",
-      showSnackbar: false,
-      username: ""
-    };
-  },
+  data: () => ({
+      items: [
+        ['folder_shared', 'Expedientes'],
+        ['group', 'Visitas'],
+        ['assignment', 'Estudios'],
+      ],
+    }),
   methods: {
     snackbar: function(message) {
       this.snackbarMessage = message;
@@ -170,30 +126,30 @@ export default {
       return clearedPaths;
     }
   },
-  mounted() {
-    var userId = localStorage.getItem("userId");
-    if (!userId) {
-      this.$router.push("login");
-    } else {
-      this.$http.get("user/" + userId).then(
-        response => {
-          this.user = response.body.user;
-          this.version = response.body.version;
-          this.username =
-            this.user.firstName.trim() +
-            " " +
-            (this.user.lastName ? this.user.lastName.trim() : "");
-        },
-        () => {
-          this.snackbar("Error al obtener el usuario de la sesión");
-        }
-      );
-    }
-  }
+//   mounted() {
+//     var userId = localStorage.getItem("userId");
+//     if (!userId) {
+//       this.$router.push("login");
+//     } else {
+//       this.$http.get("user/" + userId).then(
+//         response => {
+//           this.user = response.body.user;
+//           this.version = response.body.version;
+//           this.username =
+//             this.user.firstName.trim() +
+//             " " +
+//             (this.user.lastName ? this.user.lastName.trim() : "");
+//         },
+//         () => {
+//           this.snackbar("Error al obtener el usuario de la sesión");
+//         }
+//       );
+//     }
+//   }
 };
 </script>
 
-<style scoped>
+<style>
 .app-container {
   padding: 0 50px;
   background-color: white;
@@ -219,5 +175,9 @@ export default {
   bottom: 10px;
   right: 10px;
   color: white;
+}
+
+.drawerItems{
+    font-size: 1.5rem;
 }
 </style>

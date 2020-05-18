@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/components/Login'
+import patientList from '@/components/PatientList'
 import core from '@/components/core'
 
 Vue.use(Router)
@@ -10,7 +11,13 @@ export default new Router({
         {
         path: '/',
         component: core,
-        children: []
+        children: [
+            {
+                path: '',
+                component: patientList,
+            }
+
+        ]
         },
         {
             path: '/login',

@@ -1,52 +1,16 @@
-<!--<template>
-  <v-app>
-    <v-app-bar
-      app
-      color="transparent"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="../assets/traumaTree0.png"
-          transition="scale-transition"
-          width="40"
-        />
-        <h1>
-            Expedientes
-        </h1>
-        
-      </div>
-
-      <v-spacer></v-spacer>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://pngimage.net/wp-content/uploads/2018/05/daddy-png-4.png"
-          width="100"
-        />
-      </div>
-    </v-app-bar>
-  </v-app>
-</template>-->
-
 <template>
+<div class="app-container">
     <v-navigation-drawer
       dark
-      permanent
       enable-resize-watcher
       width="15%"
+      app
     >
     <template v-slot:img>
     <v-img src="../assets/cover.jpg" gradient="to top, rgba(17,59,78,1) 0%, rgba(24,113,105,0.25) 50%, rgba(30,128,117,0.75) 100%" height="100%"></v-img>
     </template>
         <v-container>
-            <v-row justify="space-around" align="end">
+            <v-row align="end">
                 <v-col cols="4" class="px-2">
                     <v-img
                     alt="Trauma Logo"
@@ -67,22 +31,52 @@
                 </v-col>
             </v-row>
         </v-container>
-      <v-list>
-        <v-list-item
-          v-for="([icon, text], i) in items"
-          :key="i"
-          link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
-          </v-list-item-icon>
+                <v-list>
+                    <v-divider :key="`divider-logo`"></v-divider>
+                    <v-list-item
+                    v-for="([icon, text, route], i) in items"
+                    :key="i"
+                    link
+                    @click="goTo(route)"
+                    >
+                    <v-list-item-icon>
+                        <v-icon>{{ icon }}</v-icon>
+                    </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title class="drawerItems">{{ text }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+                    <v-list-item-content>
+                        <v-list-item-title class="drawerItems">{{ text }}</v-list-item-title>
+                    </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+        <template v-slot:append>
+        <div class="pa-2">
+          <v-list>
+               <v-divider :key="`divider-logout-top`"></v-divider>
+                <v-list-item  @click="closeSesion()">
+                    <v-list-item-icon>
+                        <v-icon>person</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title class="drawerItems">Cerrar Sesión</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+          </v-list>
+        </div>
+      </template>
     </v-navigation-drawer>
+    <v-app-bar app class="main-appbar" clipped-left color="#3B8A83">
+        <v-spacer></v-spacer>
+        <!-- <v-toolbar-title class="cursor-pointer user-name" @click="goTo('')" v-text="username"></v-toolbar-title> -->
+        <v-btn text small color="accent" v-text="username">
+        </v-btn>
+        <v-btn icon small color="accent">
+            <v-icon dark>person</v-icon>
+        </v-btn>
+    </v-app-bar>
+    <v-content class="fill-height">
+      <router-view/>
+    </v-content>
+</div>
 </template>
 
 
@@ -91,10 +85,11 @@
 export default {
   name: "core",
   data: () => ({
+      username:"Usuario",
       items: [
-        ['folder_shared', 'Expedientes'],
-        ['group', 'Visitas'],
-        ['assignment', 'Estudios'],
+        ['folder_shared', 'Expedientes', ''],
+        ['group', 'Visitas', 'Visitas'],
+        ['assignment', 'Estudios', 'Estudios'],
       ],
     }),
   methods: {
@@ -149,9 +144,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .app-container {
-  padding: 0 50px;
   background-color: white;
   height: 100%;
 }
@@ -165,18 +159,10 @@ export default {
   margin-left: -50px;
   overflow: initial;
 }
-.main-toolbar {
-  background-color: white;
+.main-appbar {
+    padding: 0px 25px 0px 0px;
   box-shadow: inherit;
 }
-
-.p-version {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color: white;
-}
-
 .drawerItems{
     font-size: 1.5rem;
 }

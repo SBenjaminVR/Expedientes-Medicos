@@ -1,6 +1,14 @@
 <template>
     <div class="expedientes-design">
         <v-toolbar flat color="transparent">
+          <v-btn
+              icon
+              color="accent2"
+              class="ma-3"
+              v-on:click.stop="goTo('login')" 
+          >
+              <v-icon style="font-size:4rem;">chevron_left</v-icon>
+          </v-btn>
         <v-toolbar-title>Pacientes</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-text-field
@@ -27,10 +35,29 @@
         
         <br>
         <v-data-table :headers="headers" :items="list" :loading="loading" :search="search">
-        <v-progress-linear slot="progress" color="white" indeterminate></v-progress-linear>
+        <v-progress-linear slot="progress" color="accent2" indeterminate></v-progress-linear>
         <template slot="item" slot-scope="props">
             <tr>
-                <td class="text-xs-left">{{ props.item.name }}</td>
+                <td class="text-xs-left">
+                  <v-btn
+                    fab
+                    dark
+                    small
+                    color="primary"
+                    class="ma-3"
+                    v-on:click.stop="goTo('patient/' + props.item.id)"
+                >
+                    <v-icon>person</v-icon>
+                </v-btn>
+                  <v-btn 
+                      text 
+                      small
+                      color="green darken-4"
+                      v-on:click.stop="goTo('patient/' + props.item.id)"
+                  >
+                    {{ props.item.name }}
+                  </v-btn>
+                </td>
                 <td class="text-xs-left">{{ props.item.email }}</td>
                 <td class="text-xs-center">
                 <v-btn
@@ -39,8 +66,8 @@
                     small
                     color="primary"
                     class="ma-3"
+                    v-on:click.stop="goTo('visitsList/' + props.item.id)"
                 >
-                    <!-- v-on:click.stop="goTo(props.item.id)"  -->
                     <!-- v-if="credentials.PatientsRead"-->
                     <v-icon>visibility</v-icon>
                 </v-btn>
@@ -51,18 +78,7 @@
                     color="primary"
                     class="ma-3"
                 >
-                    <!-- v-if="credentials.PatientsUpdate"
-                    v-on:click.stop="goTo('Customersform/' + props.item.id)" -->
-                    <v-icon>create</v-icon>
-                </v-btn>
-                <v-btn
-                    fab
-                    dark
-                    small
-                    color="primary"
-                    class="ma-3"
-                >
-                    <!-- v-if="credentials.PatientsDelete"
+                    <!-- v-if="credentials.PatientsDelete" 
                     v-on:click.stop="confirmDelete(props.item.id)" -->
                     <v-icon>delete</v-icon>
                 </v-btn>

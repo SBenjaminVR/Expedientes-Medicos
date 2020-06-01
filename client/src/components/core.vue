@@ -67,9 +67,9 @@
     <v-app-bar app class="main-appbar" clipped-left color="#3B8A83">
         <v-spacer></v-spacer>
         <!-- <v-toolbar-title class="cursor-pointer user-name" @click="goTo('')" v-text="username"></v-toolbar-title> -->
-        <v-btn text small color="accent" v-text="username">
+        <v-btn text small color="white" v-text="username">
         </v-btn>
-        <v-btn icon small color="accent">
+        <v-btn icon small color="white">
             <v-icon dark>person</v-icon>
         </v-btn>
     </v-app-bar>
@@ -88,8 +88,6 @@ export default {
       username:"Usuario",
       items: [
         ['folder_shared', 'Expedientes', ''],
-        ['group', 'Visitas', 'Visitas'],
-        ['assignment', 'Estudios', 'Estudios'],
       ],
     }),
   methods: {
@@ -98,12 +96,14 @@ export default {
       this.showSnackbar = true;
     },
     goTo(route) {
-      this.$router.replace("/" + route);
+      var self = this;
+      self.$router.push("/" + route);
     },
     closeSesion: function() {
       localStorage.removeItem("userId");
       localStorage.removeItem("token");
-      this.$router.push("login");
+      // this.$router.push("login");
+      this.goTo("login");
     },
     filterPaths: function(paths) {
       const permissions = JSON.parse(localStorage.getItem("credentials"));

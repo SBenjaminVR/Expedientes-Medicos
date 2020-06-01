@@ -11,12 +11,12 @@ export default new Vuetify({
             light: {
                 primary: colors.teal.lighten1,
                 accent: "#6EFFF3",
-                accent2: "#FF9D6E"
+                accent2: "#FF5252"
             },
             dark: {
                 primary: colors.teal.lighten1,
                 accent: "#6EFFF3",
-                accent2: "#FF9D6E"
+                accent2: "#FF5252"
             }
         },
     },    

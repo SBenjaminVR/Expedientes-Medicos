@@ -58,6 +58,7 @@
                     small
                     color="primary"
                     class="ma-3"
+                    v-on:click.stop="goTo('visit/' + props.item.patientId + '/' + props.item.id)"
                 >
                     <!-- v-if="credentials.PatientsUpdate"
                     v-on:click.stop="goTo('Customersform/' + props.item.id)" -->

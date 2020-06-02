@@ -16,16 +16,56 @@
         <br>
         <h2 class="ml-5 visitTitle">{{consulta.date}},  {{consulta.time}}</h2>
         <br>
-        <h3 class="ml-5 visitTitle">Texto de la Visita:</h3>
+        <h3 class="ml-5 visitTitle">Motivo de la Consulta:</h3>
         <v-container class="ml-3" fluid>
             <v-textarea
             name="input-7-1"
             solo
-            label="Texto de la visita"
+            label="Motivo de la consulta"
             auto-grow
-            :value="consulta.text"
+            :value="consulta.motive"
             ></v-textarea>
         </v-container>
+        <h3 class="ml-5 visitTitle">Evolución:</h3>
+        <v-container class="ml-3" fluid>
+            <v-textarea
+            name="input-7-1"
+            solo
+            label="Evolución"
+            auto-grow
+            :value="consulta.evolution"
+            ></v-textarea>
+        </v-container>
+        
+        <h3 class="ml-5 visitTitle">Exploración Física:</h3>
+        <v-text-field
+        class="ml-5"
+        v-model="consulta.exploracion.altura"
+        label="Altura"
+        ></v-text-field>
+
+        <v-text-field
+        class="ml-5"
+        v-model="consulta.exploracion.peso"
+        label="Peso"
+        ></v-text-field>
+
+        <v-text-field
+        class="ml-5"
+        v-model="consulta.exploracion.IMC"
+        label="IMC"
+        ></v-text-field>
+
+        <v-container class="ml-3" fluid>
+            <v-textarea
+            name="input-7-1"
+            solo
+            label="Observación"
+            auto-grow
+            :value="consulta.exploracion.observacion"
+            ></v-textarea>
+        </v-container>
+
         <v-dialog class="ml-5" v-model="deleteDialog" max-width="350">
         <v-card>
             <v-card-title class="headline">Confirmación</v-card-title>
@@ -93,7 +133,14 @@ export default {
                     patientId: '001',
                     date: moment("25-5-2020", "DD/MM/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "4:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -103,7 +150,14 @@ export default {
                     patientId: "001",
                     date: moment("5/29/2020", "MM/DD/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "4:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -113,7 +167,14 @@ export default {
                     patientId: '001',
                     date: moment("5/31/2020", "MM/DD/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "2:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -126,7 +187,14 @@ export default {
                     patientId: '002',
                     date: moment("12-5-2020", "DD/MM/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "3:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -136,7 +204,14 @@ export default {
                     patientId: "002",
                     date: moment("5/21/2020", "MM/DD/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "9:00am",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -146,7 +221,14 @@ export default {
                     patientId: '002',
                     date: moment("5/30/2020", "MM/DD/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "8:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }        
@@ -159,7 +241,14 @@ export default {
                     patientId: '003',
                     date: moment("20-4-2020", "DD/MM/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "7:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -169,7 +258,14 @@ export default {
                     patientId: "003",
                     date: moment("5/5/2020", "MM/DD/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "5:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }
@@ -179,7 +275,14 @@ export default {
                     patientId: '003',
                     date: moment("5/15/2020", "MM/DD/YYYY").format("ddd DD/MMM/YYYY"),
                     time: "6:00pm",
-                    text: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    motive: "PADECIMIENTO ACTUAL, 48 AÑOS EDAD TALALGIA BILATERAL PREDOMINIO IZQUIERDO, REFIERE QUE LE DUELE DURANTE LAS MAÑANAS O DESPUES DE TIEMPOS PROLONGADOS DE REPOSO. YA HA UTILIZADO MEDICAMENTOS.",
+                    evolution: '',
+                    exploracion: {
+                      altura: '',
+                      peso: '',
+                      IMC: '',
+                      observacion: ''
+                    },
                     delete: false,
                 };
             }        

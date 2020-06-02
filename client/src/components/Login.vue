@@ -19,16 +19,7 @@
                 </div>
 
                 <v-spacer></v-spacer>
-                <div class="d-flex align-center">
-                    <v-img
-                    alt="Vuetify Name"
-                    class="shrink mt-1 hidden-sm-and-down"
-                    contain
-                    min-width="100"
-                    src="https://pngimage.net/wp-content/uploads/2018/05/daddy-png-4.png"
-                    width="100"
-                    />
-                </div>
+                
         </v-row>
         <v-row justify="space-between">
             <v-col cols="0" md="6">
@@ -48,7 +39,7 @@
                 <v-card-title>
                 <v-layout align-center justify-space-between>
                     <h3 class="headline">
-                    Daddy Benja
+                    Bienvenido
                     </h3>
                     <v-flex>
                     <!-- <v-img :alt="platformName" class="ml-3" contain height="48px" position="center right" src="https://pngimage.net/wp-content/uploads/2018/05/daddy-png-4.png"></v-img> -->
@@ -145,7 +136,7 @@ export default {
   methods: {
       login() {
           if (this.$refs.form.validate()) {
-              this.$router.push('/');
+              this.$router.push('/patientsList');
           }
       }
   }

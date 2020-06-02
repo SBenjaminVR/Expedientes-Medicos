@@ -13,10 +13,11 @@ const router = new Router({
     routes: [
         {
         path: '/',
+        redirect: '/login',
         component: core,
         children: [
             {
-                path: '',
+                path: '/patientsList',
                 component: patientList,
                 meta: {
                     requiresAuth: true

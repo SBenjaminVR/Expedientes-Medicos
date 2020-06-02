@@ -11,21 +11,12 @@
     </template>
         <v-container>
             <v-row align="end">
-                <v-col cols="4" class="px-2">
+                <v-col cols="12" class="px-2">
                     <v-img
                     alt="Trauma Logo"
                     class="shrink mr-2"
                     contain
                     src="../assets/traumaTree0.png"
-                    transition="scale-transition"
-                    />
-                </v-col>
-                <v-col cols="8" class="px-5">
-                    <v-img
-                    alt="Daddy"
-                    class="shrink mt-1 hidden-sm-and-down"
-                    contain
-                    src="https://pngimage.net/wp-content/uploads/2018/05/daddy-png-4.png"
                     transition="scale-transition"
                     />
                 </v-col>
@@ -85,7 +76,7 @@
 export default {
   name: "core",
   data: () => ({
-      username:"Usuario",
+      username:"Doctor",
       items: [
         ['folder_shared', 'Expedientes', ''],
       ],
@@ -103,7 +94,7 @@ export default {
       localStorage.removeItem("userId");
       localStorage.removeItem("token");
       // this.$router.push("login");
-      this.goTo("login");
+      this.goTo("");
     },
     filterPaths: function(paths) {
       const permissions = JSON.parse(localStorage.getItem("credentials"));

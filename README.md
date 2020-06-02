@@ -1,3 +1,24 @@
-# Expedientes-Medicos
+# client
 
-Proyecto que parece una actividad de Evaluación y Administración de Proyectos pero cuyo proposito oculto es obtener acceso a la base de datos del Area 51
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

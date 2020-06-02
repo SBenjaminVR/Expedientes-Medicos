@@ -67,9 +67,8 @@
         </v-container>
 
         <v-btn
-          :disabled="!valid"
           color="primary"
-          class="mr-4"
+          class="ml-5 mr-4"
           @click="goBack()"
           >
           Guardar

@@ -159,7 +159,7 @@ export default {
         var customer3 = {
             id: '003',
             name: "Benjamín Valdez Rodriguez",
-            email: "BenjitaLoquita@yahoo.com",
+            email: "Benjita@yahoo.com",
             delete: false,
         };
         var list = [];

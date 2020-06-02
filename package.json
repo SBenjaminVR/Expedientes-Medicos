@@ -4,7 +4,7 @@
   "description": "Proyecto para EYAP",
   "main": "app.js",
   "scripts": {
-    "start": "cd ./client && npm run serve"
+    "start": "cd ./client && npm start"
   },
   "repository": {
     "type": "git",

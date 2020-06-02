@@ -78,7 +78,7 @@ export default {
   data: () => ({
       username:"Doctor",
       items: [
-        ['folder_shared', 'Expedientes', ''],
+        ['folder_shared', 'Expedientes', '/patientsList'],
       ],
     }),
   methods: {

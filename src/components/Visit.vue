@@ -66,6 +66,24 @@
             ></v-textarea>
         </v-container>
 
+        <v-btn
+          :disabled="!valid"
+          color="primary"
+          class="mr-4"
+          @click="goBack()"
+          >
+          Guardar
+          </v-btn>
+
+          <v-btn
+            color="accent2"
+            class="mr-4"
+            dark
+            @click="goBack()"
+            >
+            Cancelar
+            </v-btn>
+
         <v-dialog class="ml-5" v-model="deleteDialog" max-width="350">
         <v-card>
             <v-card-title class="headline">Confirmación</v-card-title>

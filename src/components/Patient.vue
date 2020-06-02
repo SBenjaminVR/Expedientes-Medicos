@@ -202,6 +202,7 @@ export default {
     // },
     validate () {
         this.$refs.form.validate()
+        this.goBack()
       },
       reset () {
         this.$refs.form.reset()
